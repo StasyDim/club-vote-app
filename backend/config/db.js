@@ -1,10 +1,9 @@
 // backend/config/db.js
+require('dotenv').config();  // Зарежда .env променливите
 const mongoose = require("mongoose");
 
-// Локален MongoDB URI
-const MONGO_URI = "mongodb://127.0.0.1:27017/clubvote";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/clubvote";
 
-// Свързване с MongoDB (без useNewUrlParser и useUnifiedTopology)
 mongoose.connect(MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log("MongoDB error:", err));
